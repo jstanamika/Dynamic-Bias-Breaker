@@ -8,7 +8,7 @@ This is a plain HTML/CSS/JavaScript rewrite of the original React + TypeScript
 - `engine.js` — the analysis engine (topic packs, bias heuristics, presets) ported from `engine.ts`
 - `app.js` — application state + DOM rendering, ported from `App.tsx` and all the React components
 
-## What it does
+## What it does 
 
 Paste (or load a preset) argumentative text into the sandbox, click **Analyze Stance**,
 and the app heuristically scores how one-sided/"echo-chambered" the text is, then
