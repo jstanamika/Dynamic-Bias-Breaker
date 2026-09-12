@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dynamic Bias-Breaker · Cognitive Middleware</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="bg-app">
+  <div class="bg-grid"></div>
+  <div class="noise-overlay"></div>
+
+  <div id="progress-bar" class="progress-bar hidden">
+    <div class="progress-bar-fill"></div>
+  </div>
+
+  <div class="page">
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 32 32" width="24" height="24" fill="none">
+              <path d="M8 12c0-4 3.5-7 8-7s8 3 8 7c0 2.2-1 4-2.6 5.4L16 22l-5.4-4.6C8.9 16 8 14.2 8 12Z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M12 12.5h8M14 9.5h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M16 22v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="16" cy="27" r="1.4" fill="currentColor"/>
+            </svg>
+            <span class="brand-icon-dot"></span>
+          </div>
+          <div>
+            <div class="brand-title-row">
+              <h1 class="brand-title">Dynamic Bias-Breaker</h1>
+              <span class="brand-version">v2.4 · cognitive middleware</span>
+            </div>
+            <p class="brand-subtitle">Real-Time Cognitive Echo-Chamber Interrupter</p>
+          </div>
+        </div>
+
+        <div class="header-controls">
+          <div class="clock-chip">
+            <span class="clock-label">CLK</span>
+            <span id="clock-stamp" class="clock-stamp">00:00:00</span>
+            <span class="chip-sep">│</span>
+            <span id="session-count-label" class="clock-label">N=0</span>
+          </div>
+
+          <div class="stage-chip">
+            <div class="stage-item">
+              <span class="stage-dot" data-stage="0"></span>
+              <span class="stage-name">Ingest</span>
+            </div>
+            <div class="stage-item">
+              <span class="stage-sep"></span>
+              <span class="stage-dot" data-stage="1"></span>
+              <span class="stage-name">Cluster</span>
+            </div>
+            <div class="stage-item">
+              <span class="stage-sep"></span>
+              <span class="stage-dot" data-stage="2"></span>
+              <span class="stage-name">Interrupt</span>
+            </div>
+          </div>
+
+          <div id="status-pill" class="status-pill">
+            <span class="status-dot"></span>
+            <span id="status-text">Middleware Active: Protecting against confirmation bias</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="ticker-wrap">
+        <div class="ticker-track">
+          <div class="ticker-copy">
+            <span>Middleware · stance clustering online</span>
+            <span>Echo-chamber risk stream</span>
+            <span>Devil's advocate interrupter armed</span>
+            <span>No external API · on-device heuristics</span>
+            <span>Protecting against confirmation bias</span>
+          </div>
+          <div class="ticker-copy">
+            <span>Middleware · stance clustering online</span>
+            <span>Echo-chamber risk stream</span>
+            <span>Devil's advocate interrupter armed</span>
+            <span>No external API · on-device heuristics</span>
+            <span>Protecting against confirmation bias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-two">
+        <!-- Research Sandbox -->
+        <section class="glass panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow eyebrow-cyan">01 · Active Research Sandbox</p>
+              <h2 class="panel-title">Corpus intake</h2>
+              <p class="panel-desc">Paste a claim, query, or argument. Middleware will cluster stance and arm the interrupter.</p>
+            </div>
+            <span class="tag-badge">SANDBOX</span>
+          </div>
+
+          <label class="field-label" for="query-input">Research topic / argument</label>
+          <div id="textarea-wrap" class="textarea-wrap">
+            <textarea id="query-input" placeholder='e.g. "Why remote work completely destroys engineering productivity"'></textarea>
+            <div id="scan-beam" class="scan-beam hidden"></div>
+          </div>
+
+          <div class="meta-row">
+            <span id="char-word-count" class="mono">0 chars · 0 words</span>
+            <span class="hint-hotkey">⌘ / Ctrl + Enter to analyze</span>
+          </div>
+
+          <p id="error-message" class="error-message hidden"></p>
+
+          <p class="field-label" style="margin-top:1rem;">Quick-load echo-chamber topics</p>
+          <div id="preset-list" class="preset-list"></div>
+
+          <div class="actions-row">
+            <button id="analyze-btn" type="button" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="3.2"/>
+              </svg>
+              <span id="analyze-btn-label">Analyze Stance</span>
+            </button>
+            <button id="clear-btn" type="button" class="btn-secondary">Clear</button>
+            <p class="footnote">Heuristic simulation · no external API</p>
+          </div>
+        </section>
+
+        <!-- Telemetry Panel -->
+        <section class="glass panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow eyebrow-violet">02 · Real-Time Bias &amp; Cognitive Telemetry</p>
+              <h2 class="panel-title">Confirmation Bias Index</h2>
+              <p class="panel-desc">Semantic clustering score vs. a balanced, multi-pole corpus.</p>
+            </div>
+            <span id="risk-chip" class="risk-chip hidden"></span>
+          </div>
+
+          <div class="telemetry-grid">
+            <div class="gauge-col">
+              <div class="gauge-wrap">
+                <svg id="gauge-svg" width="168" height="168" viewBox="0 0 168 168" class="gauge-svg">
+                  <circle cx="84" cy="84" r="78" fill="none" stroke="rgba(148,163,184,0.12)" stroke-width="12"/>
+                  <circle id="gauge-ring" cx="84" cy="84" r="78" fill="none" stroke="#34d399" stroke-width="12"
+                    stroke-linecap="round" class="gauge-ring"/>
+                </svg>
+                <div class="gauge-center">
+                  <span id="gauge-caption" class="gauge-caption">draft signal</span>
+                  <span class="gauge-value"><span id="gauge-number">0</span><span class="gauge-percent">%</span></span>
+                </div>
+              </div>
+              <p id="gauge-status" class="gauge-status">Awaiting corpus</p>
+            </div>
+
+            <div class="telemetry-side">
+              <div id="steps-panel" class="steps-panel hidden"></div>
+              <div id="result-stance-card" class="result-stance-card hidden">
+                <p class="field-label">Detected stance</p>
+                <p id="stance-title" class="stance-title"></p>
+                <p id="stance-detail" class="stance-detail"></p>
+                <div class="stance-tags">
+                  <span id="stance-side-tag" class="mini-tag"></span>
+                  <span id="stance-topic-tag" class="mini-tag"></span>
+                  <span id="stance-conf-tag" class="mini-tag"></span>
+                </div>
+              </div>
+              <div id="awaiting-panel" class="awaiting-panel">
+                <p class="eyebrow-plain">Awaiting input stream</p>
+                <p class="awaiting-desc">Live draft signal updates as you type. Run Analyze Stance for a full cluster pass.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="clusters-block">
+            <p class="field-label">Semantic clusters</p>
+            <div id="clusters-list"></div>
+          </div>
+
+          <div id="signals-grid" class="signals-grid hidden"></div>
+          <div id="keywords-row" class="keywords-row hidden"></div>
+        </section>
+      </div>
+
+      <div id="alert-banner" class="alert-banner hidden"></div>
+
+      <!-- Devil's Advocate -->
+      <section id="devils-advocate" class="glass-strong panel devils-advocate">
+        <div id="devils-accent" class="devils-accent devils-accent-idle"></div>
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow eyebrow-amber">03 · Devil's Advocate · Cognitive Interrupter</p>
+            <h2 id="devils-title" class="panel-title">Interrupter idle</h2>
+            <p class="panel-desc panel-desc-wide">Triggers on biased drafts. Surfaces the missing perspective, counter-data, and a toggleable opposing argument.</p>
+          </div>
+          <button id="flip-btn" type="button" class="btn-amber" disabled>Toggle Counter-Perspective</button>
+        </div>
+
+        <div id="devils-idle" class="devils-idle">
+          Run Analyze Stance on a one-sided brief to auto-trigger the interrupter.
+        </div>
+
+        <div id="devils-front" class="devils-front hidden">
+          <div class="devils-cards">
+            <article class="mini-card">
+              <h3 class="mini-card-title">🔍 Blind Spot Identified</h3>
+              <p class="mini-card-sub">What perspective is missing?</p>
+              <p id="blindspot-text" class="mini-card-body"></p>
+              <ul id="missing-list" class="dot-list"></ul>
+            </article>
+            <article class="mini-card">
+              <h3 class="mini-card-title">⚖️ Counter-Argument &amp; Counter-Data</h3>
+              <p class="mini-card-sub">Nuanced trade-offs against the detected stance</p>
+              <p id="counterarg-text" class="mini-card-body"></p>
+            </article>
+          </div>
+          <div id="counterdata-grid" class="counterdata-grid"></div>
+          <p class="face-caption">Face A · missing views + counter-data · toggle to flip into the opposing technical argument</p>
+        </div>
+
+        <div id="devils-back" class="devils-back hidden">
+          <p class="eyebrow eyebrow-violet-solid">Face B · opposing technical / logical argument</p>
+          <h3 class="back-title">Counter-perspective</h3>
+          <p id="opposing-text" class="back-body"></p>
+          <div class="original-frame">
+            <p class="field-label">Original frame (for contrast)</p>
+            <p id="original-text" class="original-text"></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Session History -->
+      <section class="glass panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow eyebrow-emerald">04 · Session History &amp; Balance Tracker</p>
+            <h2 class="panel-title">Information diet</h2>
+          </div>
+          <button id="reset-session-btn" type="button" class="link-btn" disabled>Reset session</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <p class="field-label">Queries analyzed</p>
+            <p id="stat-count" class="stat-value">0</p>
+          </div>
+          <div class="stat-card">
+            <p class="field-label">Avg bias index</p>
+            <p id="stat-avg" class="stat-value">—</p>
+          </div>
+          <div class="stat-card">
+            <p class="field-label">Diet health</p>
+            <p id="stat-health" class="stat-value">—</p>
+            <p class="stat-hint">share not one-sided</p>
+          </div>
+          <div class="stat-card">
+            <p class="field-label">Session texture</p>
+            <p id="stat-texture" class="stat-value">—</p>
+          </div>
+        </div>
+
+        <div id="balance-mix" class="balance-mix hidden">
+          <div class="balance-mix-row">
+            <span>Balance mix</span>
+            <span id="balance-mix-label"></span>
+          </div>
+          <div class="balance-bar">
+            <div id="balance-bar-good" class="balance-bar-good"></div>
+            <div id="balance-bar-bad" class="balance-bar-bad"></div>
+          </div>
+        </div>
+
+        <p id="history-empty" class="history-empty">No analyses yet this session. Load a preset and run Analyze Stance.</p>
+        <ul id="history-list" class="history-list hidden"></ul>
+      </section>
+
+      <footer class="footer">
+        <span>Dynamic Bias-Breaker · simulated cognitive middleware for research hygiene.</span>
+        <span class="mono">Analysis is heuristic and educational — not an oracle.</span>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
